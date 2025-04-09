@@ -6,7 +6,7 @@ import { LoadingHelper } from "./lib/LoadingHelper";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Signup from "./pages/Signup";
-import Dashboard from "./pages/status";
+import Dashboard from "./pages/Status";
 import GroupManagement from "./pages/GroupManagement";
 import { Group } from "lucide-react";
 
