@@ -6,6 +6,9 @@ import { LoadingHelper } from "./lib/LoadingHelper";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Signup from "./pages/Signup";
+import Dashboard from "./pages/status";
+import GroupManagement from "./pages/GroupManagement";
+import { Group } from "lucide-react";
 
 
 function App() {
@@ -30,6 +33,23 @@ function App() {
             </Suspense>
           ),
         },
+        {
+          path: "/Status",
+          element: (
+            <Suspense fallback={<LoadingHelper />}>
+              <Dashboard/>
+            </Suspense>
+          ),
+        },
+
+          {
+            path: "/management",
+            element: (
+              <Suspense fallback={<LoadingHelper />}>
+                <GroupManagement/>
+              </Suspense>
+            ),
+          },
         {
           path: "*",
           element: (
