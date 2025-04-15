@@ -1,6 +1,6 @@
 // src/pages/GroupManagement.js
 import React, { useState } from 'react';
-import { FaUsers, FaSearch, FaPlus, FaEllipsisV, FaCheck, FaClock, FaTimes } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaPlus, FaEllipsisV, FaCheck, FaClock, FaTimes, FaHome, FaChartLine, FaMoneyBillWave, FaUserFriends, FaBell, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const GroupManagement = () => {
@@ -74,8 +74,68 @@ const GroupManagement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      {/* Consistent Navigation Header */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex items-center">
+              <div className="flex-shrink-0 flex items-center">
+                <FaChartLine className="h-8 w-8 text-indigo-600" />
+                <span className="ml-2 text-xl font-bold text-gray-900">ThriftPlus</span>
+              </div>
+              <nav className="hidden md:ml-8 md:flex md:space-x-8">
+                <Link 
+                  to="/" 
+                  className="text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium"
+                >
+                  <FaHome className="mr-2" />
+                  Home
+                </Link>
+                <Link 
+                  to="/dashboard" 
+                  className="text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium"
+                >
+                  <FaChartLine className="mr-2" />
+                  Status
+                </Link>
+                <Link 
+                  to="/payments" 
+                  className="text-gray-500 hover:text-gray-700 hover:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium"
+                >
+                  <FaMoneyBillWave className="mr-2" />
+                  Payments
+                </Link>
+                <Link 
+                  to="/groups" 
+                  className="text-indigo-600 inline-flex items-center px-1 pt-1 border-b-2 border-indigo-500 text-sm font-medium"
+                >
+                  <FaUsers className="mr-2" />
+                  Groups
+                </Link>
+              </nav>
+            </div>
+            <div className="flex items-center">
+              <button className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+                <span className="sr-only">Notifications</span>
+                <FaBell className="h-6 w-6" />
+                <span className="absolute top-3 right-24 h-2 w-2 rounded-full bg-red-500"></span>
+              </button>
+              <div className="ml-4 flex items-center md:ml-6">
+                <div className="ml-3 relative">
+                  <div className="flex items-center">
+                    <FaUserCircle className="h-8 w-8 text-gray-400" />
+                    <span className="ml-2 text-sm font-medium text-gray-700">User Name</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
           <div className="flex items-center mb-4 md:mb-0">
             <FaUsers className="text-3xl text-indigo-600 mr-3" />
@@ -187,7 +247,7 @@ const GroupManagement = () => {
             </ul>
           )}
         </div>
-      </div>
+      </main>
     </div>
   );
 };
