@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import { FaUser, FaLock, FaEnvelope, FaGoogle, FaGithub, FaChartLine } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+// Background image - replace with your actual import or use the URL below
+import fintechBg from '../assets/fintech-bg.jpg';
+// Alternatively, you can use this URL: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     name: '',
