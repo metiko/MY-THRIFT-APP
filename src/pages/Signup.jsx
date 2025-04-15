@@ -1,11 +1,7 @@
 // src/pages/Signup.js
 import React, { useState } from 'react';
-import { FaUser, FaLock, FaEnvelope, FaGoogle, FaGithub, FaChartLine } from 'react-icons/fa';
+import { FaUser, FaLock, FaEnvelope, FaGoogle, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-
-// Background image - replace with your actual import or use the URL below
-import fintechBg from '../assets/fintech-bg.jpg';
-// Alternatively, you can use this URL: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +26,6 @@ const Signup = () => {
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.email) newErrors.email = 'Email is required';
     if (!formData.password) newErrors.password = 'Password is required';
-    if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
@@ -45,70 +40,22 @@ const Signup = () => {
       // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
-        alert('Account created successfully! Welcome to our fintech platform.');
+        alert('Signup successful! Please check your email for verification.');
       }, 1500);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Sleek fintech background with overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={fintechBg} 
-          alt="Fintech background" 
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            e.target.src = 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80';
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-900/90"></div>
-      </div>
-
-      {/* Animated floating elements for fintech feel */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ 
-              x: Math.random() * 100 - 50,
-              y: Math.random() * 100 - 50,
-              opacity: 0.3,
-              scale: 0.8
-            }}
-            animate={{
-              x: Math.random() * 100 - 50,
-              y: Math.random() * 100 - 50,
-              transition: {
-                duration: 20 + Math.random() * 20,
-                repeat: Infinity,
-                repeatType: 'reverse'
-              }
-            }}
-            className="absolute rounded-full"
-            style={{
-              width: `${10 + Math.random() * 20}px`,
-              height: `${10 + Math.random() * 20}px`,
-              background: `rgba(255, 255, 255, ${0.05 + Math.random() * 0.1})`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
-
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden w-full max-w-md z-10 border border-white/20"
+        className="bg-white rounded-2xl shadow-xl overflow-hidden w-full max-w-md"
       >
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-center relative">
-          <div className="absolute top-4 left-4 text-white/30">
-            <FaChartLine size={24} />
-          </div>
-          <h2 className="text-3xl font-bold text-white">Join Our Platform</h2>
-          <p className="text-blue-100 mt-2">Start your financial journey today</p>
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-center">
+          <h2 className="text-3xl font-bold text-white">Create Account</h2>
+          <p className="text-blue-100 mt-2">Join us today for exclusive features</p>
         </div>
         
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
@@ -128,7 +75,7 @@ const Signup = () => {
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full pl-10 pr-3 py-2.5 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/90`}
+                  className={`w-full pl-10 pr-3 py-2 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition`}
                 />
               </div>
               {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
@@ -149,7 +96,7 @@ const Signup = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full pl-10 pr-3 py-2.5 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/90`}
+                  className={`w-full pl-10 pr-3 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition`}
                 />
               </div>
               {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
@@ -170,7 +117,7 @@ const Signup = () => {
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
-                  className={`w-full pl-10 pr-3 py-2.5 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/90`}
+                  className={`w-full pl-10 pr-3 py-2 border ${errors.password ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition`}
                 />
               </div>
               {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
@@ -191,7 +138,7 @@ const Signup = () => {
                   placeholder="••••••••"
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className={`w-full pl-10 pr-3 py-2.5 border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white/90`}
+                  className={`w-full pl-10 pr-3 py-2 border ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition`}
                 />
               </div>
               {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>}
@@ -203,20 +150,17 @@ const Signup = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 px-4 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center relative overflow-hidden"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3 px-4 rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center"
           >
-            <span className="relative z-10">
-              {isSubmitting ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Creating Account...
-                </>
-              ) : 'Get Started'}
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-800 opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </>
+            ) : 'Sign Up'}
           </motion.button>
 
           <div className="relative">
@@ -224,21 +168,21 @@ const Signup = () => {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white/90 text-gray-500 rounded">Or sign up with</span>
+              <span className="px-2 bg-white text-gray-500">Or continue with</span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <button
               type="button"
-              className="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition shadow-sm"
+              className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition"
             >
               <FaGoogle className="mr-2 text-red-500" />
               Google
             </button>
             <button
               type="button"
-              className="w-full flex items-center justify-center py-2.5 px-4 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition shadow-sm"
+              className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition"
             >
               <FaGithub className="mr-2 text-gray-800" />
               GitHub
@@ -246,11 +190,11 @@ const Signup = () => {
           </div>
         </form>
 
-        <div className="px-6 py-4 bg-gray-50/70 text-center border-t border-gray-200/50">
+        <div className="px-6 py-4 bg-gray-50 text-center">
           <p className="text-gray-600">
             Already have an account?{' '}
             <a href="/login" className="font-medium text-blue-600 hover:text-blue-500 transition">
-              Sign in
+              Log in
             </a>
           </p>
         </div>
