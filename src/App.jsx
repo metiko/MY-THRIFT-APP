@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Status";
 import GroupManagement from "./pages/GroupManagement";
 import { Group } from "lucide-react";
+import Welcome from "./pages/WelcomePage";
 
 
 function App() {
@@ -22,6 +23,14 @@ function App() {
           element: (
             <Suspense fallback={<LoadingHelper />}>
               <Index />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/WelcomePage",
+          element: (
+            <Suspense fallback={<LoadingHelper />}>
+              <Welcome/>
             </Suspense>
           ),
         },
