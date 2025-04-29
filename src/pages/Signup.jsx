@@ -193,7 +193,7 @@ const Signup = () => {
         <div className="px-6 py-4 bg-gray-50 text-center">
           <p className="text-gray-600">
             Already have an account?{' '}
-            <a href="/login" className="font-medium text-blue-600 hover:text-blue-500 transition">
+            <a href="/signin" className="font-medium text-blue-600 hover:text-blue-500 transition">
               Log in
             </a>
           </p>
